@@ -1,0 +1,69 @@
+1.git下载安装完成后，进行最后一步设置，在命令行输入：
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+2.创建仓库
+第1步：寻找合适的地方创建一个空目录：
+$ mkdir hubname
+$ cd hubname
+$ pwd    
+注意：pwd命令用于显示当前目录。
+第2步：通过git init命令把这个目录变成Git可以管理的仓库：
+$ git init
+
+3.把一个文件放到Git仓库（或者提交一个已修改的文件）
+第1步，用命令git add告诉Git，把文件添加到仓库：
+$ git add readme.txt
+第2步，用命令git commit告诉Git，把文件提交到仓库：
+$ git commit -m "wrote a readme file"
+注意：
+(a)git commit命令中-m后面输入的是本次提交的说明。
+(b)commit可以一次提交很多文件:
+$ git add file1.txt
+$ git add file2.txt file3.txt
+$ git commit -m "add 3 files."
+
+4.仓库操作相关命令
+（1）git status命令：时刻掌握仓库当前的状态
+$ git status
+（2）git diff命令：查看文件具体修改的内容
+$ git diff readme.txt 
+（3）git log命令：查看提交历史
+$ git log
+$ git log --pretty=oneline
+（4）git reset命令：退回版本
+$ git reset --hard HEAD^
+$ git reset --hard HEAD~1
+$ git reset --hard 1094a
+（5）git reflog命令：查看命令历史（可以用来查找commit id，完成版本恢复）
+$ git reflog
+（6）git checkout -- file命令：撤销工作区的所有修改（包括删除文件）
+$ git checkout -- readme.txt
+（7）git reset HEAD <file>命令：撤销暂存区修改
+$ git reset HEAD readme.txt
+（8）git rm命令：从仓库删除文件（此时文件夹中文件已删除，执行此操作后必须再次执行git commit命令）
+$ git rm test.txt
+$ git commit -m "remove test.txt"
+
+5.创建远程仓库
+第1步：创建SSH Key，然后在用户主目录里找到.ssh目录，里面有id_rsa（私钥）和id_rsa.pub（公钥）
+$ ssh-keygen -t rsa -C "youremail@example.com"
+第2步：登陆GitHub，打开“Account settings”，“SSH Keys”页面，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴id_rsa.pub文件的内容，点“Add Key”；
+第3步：登陆GitHub，在右上角找到“Create a new repo”按钮，创建一个新的仓库；
+第4步：在本地需要远程存储的仓库下运行如下命令（本地库和远程库关联）
+$ git remote add origin git@github.com:michaelliao/learngit.git
+第5步：本地库的所有内容推送到远程库
+$ git push -u origin master
+注意：第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+6.克隆远程库（使用git clone命令）
+$ git clone git@github.com:michaelliao/gitskills.git
+
+7.查看本地库关联的远程库信息（git remote -v）
+8.删除本地库与远程库之间的关联关系（git remote rm origin）
+9.本地库关联多个远程库（github和gitee）：
+git remote add github git@github.com:michaelliao/learngit.git
+git remote add gitee git@gitee.com:liaoxuefeng/learngit.git.git
+10.本地库推送到多个远程库（github和gitee）
+git push github master
+git push gitee master
