@@ -1,0 +1,64 @@
+1.系统升级
+sudo apt-get update
+sudo apt-get upgrade
+更换软件源（中科大）
+echo -e "deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi \n deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi" > /etc/apt/sources.list
+echo -e "deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui" > /etc/apt/sources.list.d/raspi.list
+
+2.软件下载
+sudo apt-get install python3-pip
+sudo apt-get install python3-pyqt5
+sudo pip3 install quamash
+sudo pip3 install autobahn
+sudo pip3 install rpi.gpio
+
+3.安装中文字库：
+（1）sudo apt-get install ttf-wqy-zenhei
+（2）安装过程中出现（Y/N）一律选 Y
+（3）安装完成后  sudo raspi-config 调出系统配置界面
+（4）选择 5  Internationalisation Options
+（5）选择I1 Change Locale
+（6）选择 zh-CN，UTF8
+（7）重启树莓派
+
+4.安装中文输入法
+sudo apt-get install ibus ibus-pinyin
+
+5.配置静态IP：
+sudo vim /etc/dhcpcd.conf
+
+6.开启外设
+
+7.断网，整理桌面
+
+8.禁止树莓派休眠：
+（1）用管理员root账户登录树莓派，在文件夹/etc/profile.d/里面新建内置文件screen.sh。
+（2）编辑文件screen.sh，写入以下两行内容:
+xset dpms 0 0 0
+xset s off
+
+9.添加自启动：
+在/home/pi/.config下创建一个文件夹，名称为autostart，并在该文件夹下创建一个xxx.desktop文件，文件内容如下：
+
+[Desktop Entry]
+Name=ScanTest
+Comment=My Python Program
+Exec=python /home/pi/ScanTest/Scan.py
+Icon=/home/pi/ScanTest/Scan.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Application;Development;
+StartupNotify=true
+
+10.安装微雪7寸屏幕（7 inch HDMI LCD (H))方法
+编辑TF卡根目录下的config.txt文件，在末尾添加：
+max_usb_current=1
+hdmi_group=2
+hdmi_mode=87
+hdmi_cvt 1024 600 60 6 0 0 0
+
+11.查看I2C设备
+（1）sudo apt-get install i2c-tools（安装）
+（2）sudo i2cdetect -l（查看安装编号）
+（3）sudo i2cdetect -y 1（I2C设备查询）
