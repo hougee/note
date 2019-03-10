@@ -2,8 +2,9 @@
 sudo apt-get update
 sudo apt-get upgrade
 更换软件源（中科大）
-echo -e "deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi \n deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi" > /etc/apt/sources.list
-echo -e "deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/ stretch main ui" > /etc/apt/sources.list.d/raspi.list
+sudo nano /etc/apt/sources.list
+deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free
+deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free
 
 2.软件下载
 sudo apt-get install python3-pip
@@ -28,7 +29,7 @@ sudo apt-get install ibus ibus-pinyin
 sudo nano /etc/dhcpcd.conf
 
 6.开启外设
-sudo nano raspi-config
+sudo raspi-config
 
 7.断网，整理桌面
 
