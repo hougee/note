@@ -25,9 +25,10 @@ sudo pip3 install rpi.gpio
 sudo apt-get install ibus ibus-pinyin
 
 5.配置静态IP：
-sudo vim /etc/dhcpcd.conf
+sudo nano /etc/dhcpcd.conf
 
 6.开启外设
+sudo nano raspi-config
 
 7.断网，整理桌面
 
@@ -62,3 +63,11 @@ hdmi_cvt 1024 600 60 6 0 0 0
 （1）sudo apt-get install i2c-tools（安装）
 （2）sudo i2cdetect -l（查看安装编号）
 （3）sudo i2cdetect -y 1（I2C设备查询）
+
+12.显示分辨率配置
+（1）sudo nano /boot/config.txt
+（2）去掉以下行前面的“#”：
+hdmi_force_hotplug=1  #即便没有检测到HDMI显示器也要使用HDMI模式
+hdmi_drive=2  #HDMI模式
+hdmi_group=2  #使用DMT格式
+hdmi_mode=16  #DMT格式下的屏幕分辨率，这里是指1024X768
