@@ -86,3 +86,9 @@ serial0是GPIO引脚对应的串口，serial1是蓝牙对应的串口。
 第二个问题是：would you like the serial port hardware to be enabled? 选是。
 （2）sudo  nano  /boot/config.txt
 在尾行输入：dtoverlay=pi3-miniuart-bt 将树莓派3的硬件串口与mini串口默认映射对换。重启，即可。
+
+14.修改用户密码
+（1）sudo passwd pi     #修改pi密码
+（2）sudo passwd root   #修改root密码
+（3）su root            #切换到root用户
+（4）su pi              #切换到pi用户
