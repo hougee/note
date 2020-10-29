@@ -1,0 +1,25 @@
+1.最基本结构
+public class HelloWorld{
+    public static void main(String[] args){
+        
+    }
+}
+
+2.控制台输出
+System.out.println("你好!");
+
+3.导入键盘录入包及使用方法
+import java.util.Scanner;
+Scanner sc=new Scanner(System.in);
+int a=sc.nextInt();
+
+4.常用命名方法
+（1）小驼峰命名法（方法、变量）：studentName
+（2）大驼峰命名法（类）：StudentName
+
+5.隐式转换
+当小的数据类型和大的数据类型一起运算的时候，小的会先提升为大的，然后再进行运算；
+特别注意：byte、short、char在运算之前都会直接提升为int类型，然后再进行运算。
+
+6.字符串的“+”操作
+在“+”操作中，如果出现了字符串就是连接运算符，否则就是算术运算；当连续进行“+”操作时，从左到右逐个执行。
