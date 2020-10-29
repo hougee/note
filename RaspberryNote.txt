@@ -92,3 +92,12 @@ serial0是GPIO引脚对应的串口，serial1是蓝牙对应的串口。
 （2）sudo passwd root   #修改root密码
 （3）su root            #切换到root用户
 （4）su pi              #切换到pi用户
+
+
+15.树莓派安装VS Code步骤：
+（1）树莓派运行如下命令：
+curl -s https://packagecloud.io/install/repositories/headmelted/codebuilds/script.deb.sh | sudo bash
+（2）打开如下网页寻找最新版VS Code版本：
+https://packagecloud.io/headmelted/codebuilds
+（3）下载最新版本后，直接在树莓派上双击安装
+https://packagecloud.io/headmelted/codebuilds/packages/debian/stretch/code-oss_1.45.0-1586135927_armhf.deb/download.deb
